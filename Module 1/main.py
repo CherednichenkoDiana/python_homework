@@ -12,13 +12,13 @@ print(2*2+2 == 2*(2+2))
 #4th program
 print(int(float('123.456')*10)%10)
 
-name = "Hello"
-print(name)
-name = "World"
-print(name)
-
-var = "Hello World!"
-print(var[2:7:2])
-son_age = 5
-my_age = "30"
-print(son_age * my_age)
+# name = "Hello"
+# print(name)
+# name = "World"
+# print(name)
+#
+# var = "Hello World!"
+# print(var[2:7:2])
+# son_age = 5
+# my_age = "30"
+# print(son_age * my_age)
