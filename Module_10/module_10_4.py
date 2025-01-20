@@ -27,16 +27,34 @@ class Cafe:
     def guest_arrival(self, *guests):
         for guest in guests:
             for table in self.tables:
-                if table.guest == None:
+                if table.guest is None:
                     table.guest = guest
                     guest.start()
                     print(f'{guest.name} сел(-а) за стол номер {table.number}')
-                else:
-                    self.queue.put(guest)
-                    print(f'{guest.name} в очереди')
+                    break
+            if not guest.is_alive():
+                self.queue.put(guest)
+                print(f'{guest.name} в очереди')
 
     def discuss_guests(self):
-        while
+        while not self.queue.empty():
+            for table in self.tables:
+                if (not table.guest is None) and (not table.guest.is_alive()):
+                    print(f'{table.guest.name} покушал(-а) и ушёл(ушла)')
+                    table.guest = None
+                    print(f'Стол номер {table.number} свободен')
+                    table.guest = self.queue.get()
+                    print(f'{table.guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {table.number}')
+                    table.guest.start()
+        for table in self.tables:
+            while table.guest.is_alive():
+                table.guest.join()
+            print(f'{table.guest.name} покушал(-а) и ушёл(ушла)')
+            table.guest = None
+            print(f'Стол номер {table.number} свободен')
+
+
+
 
 if __name__ == '__main__':
     # Создание столов
