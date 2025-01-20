@@ -1,5 +1,3 @@
-import threading
-import multiprocessing
 from multiprocessing import Pool
 import time
 
@@ -13,7 +11,6 @@ def read_info(name):
                 break
 
 if __name__ == '__main__':
-
     filenames = [f'./file {number}.txt' for number in range(1, 5)]
 
 # Линейный вызов
